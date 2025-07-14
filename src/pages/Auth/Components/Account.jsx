@@ -1,13 +1,16 @@
 import {Controller, useForm} from "react-hook-form";
-import {Link} from "react-router-dom";
+import {useAuth} from "@/GlobalComponents/AuthProvider.jsx";
+import { deleteData } from "@neylorxt/react-request"
 
 
 export default function Account() {
+    const {user, getToken, logout} = useAuth()
+
 
     const {control, handleSubmit, watch, formState: { errors } } = useForm({
         defaultValues: {
-            username: "username",
-            email: "email.com",
+            username: user?.username ?? "none",
+            email: user?.email ?? "none",
             password: "******",
         }
     });
@@ -17,8 +20,25 @@ export default function Account() {
         console.log(data);
     }
 
-    const handleDelete = () => {
-        console.log("delete");
+    const handleDelete = async () => {
+
+        const response = await deleteData("http://localhost:5000/mini-bank_api/user/auth/delete", {
+            config:{
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + getToken()
+                }
+            }
+        })
+
+        console.log(response);
+
+        if(response.success) {
+            logout();
+            window.location.href = "/login";
+        }
+
+
     }
 
 

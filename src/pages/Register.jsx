@@ -2,7 +2,12 @@ import Navbar from "@/pages/components/Navbar.jsx";
 import {Link} from "react-router-dom";
 import {Controller, useForm } from "react-hook-form";
 
+import { sendData } from "@neylorxt/react-request"
+import {useAuth} from "@/GlobalComponents/AuthProvider.jsx";
+
 export default function Register() {
+    const {login} = useAuth()
+
     const {control, handleSubmit, watch, formState: { errors } } = useForm({
         defaultValues: {
             username: "",
@@ -12,8 +17,24 @@ export default function Register() {
         }
     });
 
-    const handleRegister = (data) => {
-        console.log(data);
+    const handleRegister = async (data) => {
+
+        const { confirm_password, ...newData } = data;
+
+        const response = await sendData("http://localhost:5000/mini-bank_api/user/register", {
+            data: newData,
+            config:{
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }
+        })
+
+        if(response.success) {
+            login(response.data.token);
+            window.location.href = "/dashboard";
+        }
+
     }
 
     return (

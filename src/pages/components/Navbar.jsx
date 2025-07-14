@@ -1,22 +1,14 @@
 import { useState } from 'react';
-import {Link, useLocation} from 'react-router-dom';
+import {Link, NavLink, useLocation} from 'react-router-dom';
 import { Avatar } from '@mantine/core';
+import {useAuth} from "@/GlobalComponents/AuthProvider.jsx";
 
 export default function Navbar() {
-    const [user, setUser] = useState(null);
+    const {user} = useAuth();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     //get location /....
     const location = useLocation();
-
-
-
-
-
-
-
-
-
 
 
 
@@ -43,7 +35,11 @@ export default function Navbar() {
 
                     {
                         user ?
-                            ( <Avatar color="cyan" radius="xl">MK</Avatar> )
+                            (
+                                <NavLink to={"/dashboard"} >
+                                    <Avatar color="cyan" radius="xl">MK</Avatar>
+                                </NavLink>
+                            )
 
                             :
 

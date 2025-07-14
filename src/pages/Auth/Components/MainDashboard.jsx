@@ -1,6 +1,9 @@
+import {useAuth} from "@/GlobalComponents/AuthProvider.jsx";
 
 
 export default function MainDashboard() {
+    const {user} = useAuth();
+
     return <>
         <section>
 
@@ -26,7 +29,7 @@ export default function MainDashboard() {
                                         </svg>
                                     </div>
                                 </div>
-                                <div className="text-3xl font-extrabold text-gray-800">99+</div>
+                                <div className="text-3xl font-extrabold text-gray-800">{user?.recentFundsReceive?.length ?? 0}</div>
                                 <div className="text-gray-800 font-semibold">Money recipients</div>
                             </div>
 
@@ -44,7 +47,7 @@ export default function MainDashboard() {
                                         </svg>
                                     </div>
                                 </div>
-                                <div className="text-3xl font-extrabold text-gray-800">10+</div>
+                                <div className="text-3xl font-extrabold text-gray-800">{user?.recentFundsTransfer?.length ?? 0}</div>
                                 <div className="text-gray-500 font-semibold">Money senders</div>
                             </div>
 
@@ -52,18 +55,29 @@ export default function MainDashboard() {
                                 className="flex flex-col items-center p-8 bg-gray-300 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
                                 <div
                                     className="mb-6 flex items-center justify-center w-28 h-28 rounded-full bg-gradient-to-r from-purple-500 to-pink-400 p-1">
-                                    <div className="w-full h-full rounded-full bg-white flex items-center justify-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                             className="w-12 h-12 text-gray-900"
-                                             viewBox="0 0 24 24">
-                                            <path
-                                                d="M17.9 17.39c-.26-.8-1.01-1.39-1.9-1.39h-1v-3a1 1 0 0 0-1-1H8v-2h2a1 1 0 0 0 1-1V7h2a2 2 0 0 0 2-2v-.41a7.984 7.984 0 0 1 2.9 12.8M11 19.93c-3.95-.49-7-3.85-7-7.93c0-.62.08-1.22.21-1.79L9 15v1a2 2 0 0 0 2 2m1-16A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2">
-                                            </path>
+                                    <div
+                                        className="w-full h-full rounded-full bg-white flex items-center justify-center">
+
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70"
+                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+                                             strokeLinecap="round" strokeLinejoin="round"
+                                             className="icon icon-tabler icons-tabler-outline icon-tabler-currency-bitcoin">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                            <path d="M6 6h8a3 3 0 0 1 0 6a3 3 0 0 1 0 6h-8"/>
+                                            <path d="M8 6l0 12"/>
+                                            <path d="M8 12l6 0"/>
+                                            <path d="M9 3l0 3"/>
+                                            <path d="M13 3l0 3"/>
+                                            <path d="M9 18l0 3"/>
+                                            <path d="M13 18l0 3"/>
                                         </svg>
+
                                     </div>
                                 </div>
-                                <div className="text-3xl font-extrabold text-gray-800">500 +</div>
-                                <div className="text-gray-500 font-semibold">My fund deposits</div>
+                                <div className="text-3xl text-amber-600 font-extrabold">{
+                                    user?.money ?? "none"
+                                }</div>
+                                <div className="text-amber-600 font-semibold">Amount</div>
                             </div>
                         </div>
                     </div>
@@ -75,7 +89,7 @@ export default function MainDashboard() {
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6 px-6 h-150 ">
 
-                    <div className="bg-gray-300 rounded-lg shadow overflow-auto">
+                <div className="bg-gray-300 rounded-lg shadow overflow-auto">
                         <div className="px-6 py-4 border-b border-gray-200">
                             <h2 className="text-lg font-semibold text-gray-800">Recent Funds Transfer</h2>
                         </div>

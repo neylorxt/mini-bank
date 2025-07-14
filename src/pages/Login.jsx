@@ -1,17 +1,39 @@
 import Navbar from "@/pages/components/Navbar.jsx";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useForm, Controller} from "react-hook-form"
+import { sendData, sendRequest } from "@neylorxt/react-request"
+import {useAuth} from "@/GlobalComponents/AuthProvider.jsx";
 
 export default function Login() {
-    const {register, control, handleSubmit, formState: { errors } } = useForm({
+    const {login} = useAuth();
+    const navigate = useNavigate();
+
+    const { control, handleSubmit, formState: { errors } } = useForm({
         defaultValues: {
             email: "",
             password: "",
         }
     });
 
-    const handleLogin = (data) => {
-        console.log(data);
+    const handleLogin = async (data) => {
+        // const response = await sendData("http://localhost:5000/mini-bank_api/user/login", {
+        //     data: data
+        // })
+
+        const response = await sendRequest("http://localhost:5000/mini-bank_api/user/login", {
+            method: "POST",
+            data: data
+        })
+
+        if(response.success) {
+            await login(response.data.token);
+
+            setTimeout(() => {
+                navigate("/dashboard");
+            }, 300);
+        }
+
+        console.log(response);
     }
 
     return (
