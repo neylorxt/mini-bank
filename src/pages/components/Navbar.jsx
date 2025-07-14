@@ -32,7 +32,7 @@ export default function Navbar() {
     return (
         <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <Link to={"/"} className="flex items-center space-x-3 rtl:space-x-reverse">
+                <Link to={"/"} className="flex items-center space-x-3 rtl:space-x-reverse ">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/B-logo-1.png" className="h-8" alt="Logo" />
                     <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Mini-Bank</span>
                 </Link>
@@ -79,26 +79,30 @@ export default function Navbar() {
                     <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                         <li>
                             <Link to={"/"}
-                               className={`block py-2 px-3 ${location.pathname.length < 2 ? `text-blue-700` : `text-gray-900`} rounded md:bg-transparent md:p-0`}
+                               className={`block py-2 px-3 ${location.pathname.length < 2 ? `text-blue-700` : `dark:text-white text-gray-900`} 
+                               rounded md:bg-transparent md:p-0 hover:text-blue-700`}
                                aria-current="page">
                                 Home
                             </Link>
                         </li>
                         <li>
                             <Link to={"/about"}
-                               className={`block py-2 px-3 ${location.pathname.includes("about") ? `text-blue-700` : `text-gray-900`} rounded md:bg-transparent md:p-0`}>
+                               className={`block py-2 px-3 hover:text-blue-700 ${location.pathname.includes("about") ? `text-blue-700` : `dark:text-white text-gray-900`} 
+                               rounded md:bg-transparent md:p-0 `}>
                                 About
                             </Link>
                         </li>
                         <li>
                             <Link to={"/services"}
-                               className={`block py-2 px-3 ${location.pathname.includes("services") ? `text-blue-700` : `text-gray-900`} rounded md:bg-transparent md:p-0`}>
+                               className={`block py-2 px-3 hover:text-blue-700 ${location.pathname.includes("services") ? `text-blue-700` : `dark:text-white text-gray-900`} 
+                               rounded md:bg-transparent md:p-0 `}>
                                 Services
                             </Link>
                         </li>
                         <li>
                             <Link to={"/contact"}
-                               className={`block py-2 px-3 ${location.pathname.includes("contact") ? `text-blue-700` : `text-gray-900`} rounded md:bg-transparent md:p-0`}>
+                               className={`block py-2 px-3 hover:text-blue-700 ${location.pathname.includes("contact") ? `text-blue-700` : `dark:text-white text-gray-900`} 
+                               rounded md:bg-transparent md:p-0`}>
                                 Contact
                             </Link>
                         </li>

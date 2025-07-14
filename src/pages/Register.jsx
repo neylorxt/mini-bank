@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import {Controller, useForm } from "react-hook-form";
 
 export default function Register() {
-    const {register, control, handleSubmit, watch, formState: { errors } } = useForm({
+    const {control, handleSubmit, watch, formState: { errors } } = useForm({
         defaultValues: {
             username: "",
             email: "",
@@ -12,7 +12,7 @@ export default function Register() {
         }
     });
 
-    const handleLogin = (data) => {
+    const handleRegister = (data) => {
         console.log(data);
     }
 
@@ -34,7 +34,7 @@ export default function Register() {
                                     </h3>
                                 </div>
                             </div>
-                            <form onSubmit={handleSubmit(handleLogin)} className="space-y-5">
+                            <form onSubmit={handleSubmit(handleRegister)} className="space-y-5">
 
                                 <Controller
                                     name="username"
@@ -99,7 +99,7 @@ export default function Register() {
                                     control={control}
                                     rules={ { required: true,
                                         minLength: 4,
-                                        pattern:{ required: true, value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]{6,}$/,
+                                        pattern:{ required: true, value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&-_])[A-Za-z\d@$!%*?&-_]{6,}$/,
                                         }}
                                     }
                                     render={ ({ field }) => (
@@ -132,7 +132,7 @@ export default function Register() {
                                     rules={
                                         {
                                             required: true, minLength: 4,
-                                            pattern:{ required: true, value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]{6,}$/,
+                                            pattern:{ required: true, value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&-_])[A-Za-z\d@$!%*?&-_]{6,}$/,
                                             },
                                             validate: (value) => value === watch("password") || "Passwords don't match"
                                         }

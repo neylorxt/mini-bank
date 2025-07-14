@@ -1,10 +1,8 @@
-import Navbar from "@/pages/components/Navbar.jsx";
 import {Link} from "react-router-dom";
 
 export default function Index() {
     return (
         <>
-            <Navbar/>
 
             <section
                 className="text-gray-600 body-font h-screen flex bg-[url(https://upload.wikimedia.org/wikipedia/commons/3/35/Bitcoin_Network_Blue_4k.jpg)] bg-cover bg-center">

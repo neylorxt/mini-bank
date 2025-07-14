@@ -64,7 +64,7 @@ export default function Login() {
                                     name={"password"}
                                     control={control}
                                     rules={ { required: true, minLength: 4,
-                                        pattern:{ required: true, value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]{6,}$/,
+                                        pattern:{ required: true, value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&-_])[A-Za-z\d@$!%*?&-_]{6,}$/,
                                         }}
                                     }
                                     render={ ({ field }) => (
