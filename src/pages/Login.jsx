@@ -1,7 +1,7 @@
 import Navbar from "@/pages/components/Navbar.jsx";
 import {Link, useNavigate} from "react-router-dom";
 import {useForm, Controller} from "react-hook-form"
-import { sendData, sendRequest } from "@neylorxt/react-request"
+import { sendData } from "@neylorxt/react-request"
 import {useAuth} from "@/GlobalComponents/AuthProvider.jsx";
 
 export default function Login() {
@@ -20,8 +20,7 @@ export default function Login() {
         //     data: data
         // })
 
-        const response = await sendRequest("http://localhost:5000/mini-bank_api/user/login", {
-            method: "POST",
+        const response = await sendData("http://localhost:5000/mini-bank_api/user/login", {
             data: data
         })
 
@@ -33,7 +32,6 @@ export default function Login() {
             }, 300);
         }
 
-        console.log(response);
     }
 
     return (

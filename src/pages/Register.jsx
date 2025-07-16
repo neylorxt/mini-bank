@@ -1,12 +1,13 @@
 import Navbar from "@/pages/components/Navbar.jsx";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {Controller, useForm } from "react-hook-form";
 
 import { sendData } from "@neylorxt/react-request"
 import {useAuth} from "@/GlobalComponents/AuthProvider.jsx";
 
 export default function Register() {
-    const {login} = useAuth()
+    const {login} = useAuth();
+    const navigate = useNavigate();
 
     const {control, handleSubmit, watch, formState: { errors } } = useForm({
         defaultValues: {
@@ -31,8 +32,11 @@ export default function Register() {
         })
 
         if(response.success) {
-            login(response.data.token);
-            window.location.href = "/dashboard";
+            await login(response.data.token);
+
+            setTimeout(() => {
+                navigate("/dashboard");
+            }, 300);
         }
 
     }

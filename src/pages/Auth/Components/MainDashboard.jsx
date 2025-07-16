@@ -29,8 +29,8 @@ export default function MainDashboard() {
                                         </svg>
                                     </div>
                                 </div>
-                                <div className="text-3xl font-extrabold text-gray-800">{user?.recentFundsReceive?.length ?? 0}</div>
-                                <div className="text-gray-800 font-semibold">Money recipients</div>
+                                <div className="text-3xl font-extrabold text-gray-800">{user?.receivedTransfers?.length ?? 0}</div>
+                                <div className="text-gray-800 font-semibold">Received Transfers</div>
                             </div>
 
                             <div
@@ -47,8 +47,8 @@ export default function MainDashboard() {
                                         </svg>
                                     </div>
                                 </div>
-                                <div className="text-3xl font-extrabold text-gray-800">{user?.recentFundsTransfer?.length ?? 0}</div>
-                                <div className="text-gray-500 font-semibold">Money senders</div>
+                                <div className="text-3xl font-extrabold text-gray-800">{user?.sentTransfers?.length ?? 0}</div>
+                                <div className="text-gray-500 font-semibold">Sent Transfers</div>
                             </div>
 
                             <div
@@ -253,7 +253,7 @@ export default function MainDashboard() {
 
                     <div className="bg-gray-300 rounded-lg shadow overflow-auto">
                         <div className="px-6 py-4 border-b border-gray-200">
-                            <h2 className="text-lg font-semibold text-gray-800">Recent funds received</h2>
+                            <h2 className="text-lg font-semibold text-gray-800">Sent Transfers</h2>
                         </div>
                         <div className="bg-gray-300">
                             <table className="min-w-full divide-y divide-gray-200">
@@ -266,7 +266,9 @@ export default function MainDashboard() {
                                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
                                 </tr>
                                 </thead>
+
                                 <tbody className="bg-gray-300 divide-y divide-gray-200">
+
                                 <tr>
                                     <td className="px-6 py-4 whitespace-nowrap">
                                         <div className="flex items-center">
@@ -295,119 +297,9 @@ export default function MainDashboard() {
                                             </span>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td className="px-6 py-4 whitespace-nowrap">
-                                        <div className="flex items-center">
-                                            <div className="flex-shrink-0 h-10 w-10">
-                                                <img className="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/men/32.jpg" alt="" />
-                                            </div>
-                                            <div className="ml-4">
-                                                <div className="text-sm font-medium text-gray-900">John Smith</div>
-                                                <div className="text-sm text-gray-500">john@example.com</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap">
-                                        <div className="text-sm text-gray-900">Deluxe Suite</div>
-                                        <div className="text-sm text-gray-500">#205</div>
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        15 May 2023
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        20 May 2023
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap">
-                                            <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                Checked In
-                                            </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="px-6 py-4 whitespace-nowrap">
-                                        <div className="flex items-center">
-                                            <div className="flex-shrink-0 h-10 w-10">
-                                                <img className="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/men/32.jpg" alt="" />
-                                            </div>
-                                            <div className="ml-4">
-                                                <div className="text-sm font-medium text-gray-900">John Smith</div>
-                                                <div className="text-sm text-gray-500">john@example.com</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap">
-                                        <div className="text-sm text-gray-900">Deluxe Suite</div>
-                                        <div className="text-sm text-gray-500">#205</div>
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        15 May 2023
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        20 May 2023
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap">
-                                            <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                Checked In
-                                            </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="px-6 py-4 whitespace-nowrap">
-                                        <div className="flex items-center">
-                                            <div className="flex-shrink-0 h-10 w-10">
-                                                <img className="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/men/32.jpg" alt="" />
-                                            </div>
-                                            <div className="ml-4">
-                                                <div className="text-sm font-medium text-gray-900">John Smith</div>
-                                                <div className="text-sm text-gray-500">john@example.com</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap">
-                                        <div className="text-sm text-gray-900">Deluxe Suite</div>
-                                        <div className="text-sm text-gray-500">#205</div>
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        15 May 2023
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        20 May 2023
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap">
-                                            <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                Checked In
-                                            </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="px-6 py-4 whitespace-nowrap">
-                                        <div className="flex items-center">
-                                            <div className="flex-shrink-0 h-10 w-10">
-                                                <img className="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/women/44.jpg" alt="" />
-                                            </div>
-                                            <div className="ml-4">
-                                                <div className="text-sm font-medium text-gray-900">Emily Johnson</div>
-                                                <div className="text-sm text-gray-500">emily@example.com</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap">
-                                        <div className="text-sm text-gray-900">Executive Room</div>
-                                        <div className="text-sm text-gray-500">#312</div>
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        18 May 2023
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        22 May 2023
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap">
-                                            <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
-                                                Confirmed
-                                            </span>
-                                    </td>
-                                </tr>
+
                                 </tbody>
+
                             </table>
                         </div>
                     </div>

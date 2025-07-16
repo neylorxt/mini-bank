@@ -1,9 +1,12 @@
-import {IconCurrencyDollar, IconMessage } from "@tabler/icons-react";
+import {IconCurrencyDollar } from "@tabler/icons-react";
 import {Controller, useForm} from "react-hook-form";
+import { sendData } from "@neylorxt/react-request"
+import {useAuth} from "@/GlobalComponents/AuthProvider.jsx";
 
 
 
 export default function Transfer() {
+    const {getToken, updateUser} = useAuth()
 
     const {control, handleSubmit, formState: { errors } } = useForm({
         defaultValues: {
@@ -14,8 +17,22 @@ export default function Transfer() {
     });
 
 
-    const handleTransfer = (data) => {
-        console.log(data);
+    const handleTransfer = async (data) => {
+        const response = await sendData("http://localhost:5000/mini-bank_api/user/auth/transfer", {
+            data: data,
+            config: {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + getToken()
+                }
+            }
+        })
+
+
+        if (response.success) {
+            updateUser( response.data.user );
+            console.log(response.data);
+        }
     }
 
 

@@ -9,6 +9,7 @@ import {
 } from '@tabler/icons-react';
 import { Center, Stack, Tooltip, UnstyledButton } from '@mantine/core';
 import { MantineLogo } from '@mantinex/mantine-logo';
+import {useAuth} from "@/GlobalComponents/AuthProvider.jsx";
 
 function NavbarLink({ icon: Icon, label, active, onClick, clickOnIcon }) {
 
@@ -42,6 +43,7 @@ const mockdata = [
 
 export default function SidebarDashboard({clickOnIcon, setClickOnIcon}) {
     const [active, setActive] = useState(false);
+    const {logout} = useAuth();
 
     const links = mockdata.map((link, index) => (
         <NavbarLink
@@ -71,12 +73,21 @@ export default function SidebarDashboard({clickOnIcon, setClickOnIcon}) {
             </div>
 
             <Stack justify="cente text-white" gap={0}>
-                <NavbarLink icon={IconUser} label="Account" active={false}
-                            clickOnIcon={clickOnIcon} onClick={() => {
-                                setActive(false);
-                                setClickOnIcon("Account");
-                            }} />
-                <NavbarLink icon={IconLogout} label="Logout" />
+                <NavbarLink
+                    icon={IconUser}
+                    label="Account"
+                    active={false}
+                    clickOnIcon={clickOnIcon} onClick={() => {
+                        setActive(false);
+                        setClickOnIcon("Account");
+                    }} />
+                <NavbarLink
+                    icon={IconLogout}
+                    label="Logout" active={false}
+                    clickOnIcon={clickOnIcon} onClick={() => {
+                        logout();
+                    }}
+                />
             </Stack>
         </nav>
     );
