@@ -6,10 +6,13 @@ import Settings from "@/pages/Auth/Components/Settings.jsx";
 import Account from "@/pages/Auth/Components/Account.jsx";
 import { getData } from "@neylorxt/react-request"
 import {useAuth} from "@/GlobalComponents/AuthProvider.jsx";
+import AddMoney from "@/pages/Auth/Components/AddMoney.jsx";
 
 
 export default function Dashboard() {
-    const {getToken, updateUser, logout} = useAuth();
+    const {getToken, updateUser, logout, user} = useAuth();
+    const [sentTransferArray, setSentTransferArray] = useState([]);
+    const [receivedTransferArray, setReceivedTransferArray] = useState([]);
 
     const [clickOnIcon, setClickOnIcon] = useState("dashboard");
 
@@ -24,7 +27,9 @@ export default function Dashboard() {
             })
 
             if (response.success) {
-                updateUser(response.data.user);
+                updateUser(response.data?.user);
+                setSentTransferArray( response.data?.user?.sentTransfers )
+                setReceivedTransferArray( response.data?.user?.receivedTransfers )
             }else{
                 console.log(response.data?.error);
                 logout();
@@ -35,6 +40,15 @@ export default function Dashboard() {
         getMyData();
 
     }, []);
+
+    useEffect(() => {
+        if(user) {
+            setReceivedTransferArray( user?.receivedTransfers )
+            setSentTransferArray( user?.sentTransfers )
+        }
+    }, [ user ])
+
+
 
     useEffect(() => {
         if(clickOnIcon.toLowerCase().includes("home")) {
@@ -48,10 +62,11 @@ export default function Dashboard() {
                 <SidebarDashboard clickOnIcon={clickOnIcon} setClickOnIcon={setClickOnIcon}/>
             </aside>
             <article className="w-full">
-                { clickOnIcon.toLowerCase().includes("dashboard")  && <MainDashboard/> }
+                { clickOnIcon.toLowerCase().includes("dashboard")  && <MainDashboard sentTransferArray={sentTransferArray} receivedTransferArray={receivedTransferArray} /> }
                 { clickOnIcon.toLowerCase().includes("settings") && <Settings/> }
                 { clickOnIcon.toLowerCase().includes("transfer") && <Transfer/> }
                 { clickOnIcon.toLowerCase().includes("account") && <Account/> }
+                { clickOnIcon.toLowerCase().includes("addmoney") && <AddMoney/> }
 
             </article>
         </section>

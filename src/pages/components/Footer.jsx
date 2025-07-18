@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 
 export default function Footer() {
     return (
-        <div className={" border-grey-300 border-t-2 bg-white dark:bg-gray-900"}>
+        <div className={" border-grey- bg-white dark:bg-gray-900"}>
             <Container className={"flex justify-between items-center py-5"}>
                 <Link to={"/"} className="flex items-center space-x-3 rtl:space-x-reverse">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/B-logo-1.png" className="h-8" alt="Logo" />

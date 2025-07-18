@@ -16,7 +16,7 @@ function App() {
   return (
       <AuthProvider>
         <BrowserRouter>
-            <main className="bg-gray-300 dark:bg-gray-800">
+            <main className="bg-gray-300 dark:bg-gray-800 h-screen">
                 <Navbar/>
 
                 <Routes>

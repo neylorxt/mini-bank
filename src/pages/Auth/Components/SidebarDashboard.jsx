@@ -6,6 +6,7 @@ import {
     IconSettings,
     IconSwitchHorizontal,
     IconUser,
+    IconMoneybagPlus
 } from '@tabler/icons-react';
 import { Center, Stack, Tooltip, UnstyledButton } from '@mantine/core';
 import { MantineLogo } from '@mantinex/mantine-logo';
@@ -36,6 +37,7 @@ function NavbarLink({ icon: Icon, label, active, onClick, clickOnIcon }) {
 const mockdata = [
     { icon: IconHome2, label: 'Home'},
     { icon: IconGauge, label: 'Dashboard' },
+    { icon: IconMoneybagPlus, label: 'AddMoney'},
     { icon: IconSwitchHorizontal, label: 'Transfer'},
     { icon: IconSettings, label: 'Settings'},
 ];
@@ -60,7 +62,7 @@ export default function SidebarDashboard({clickOnIcon, setClickOnIcon}) {
     ));
 
     return (
-        <nav className="w-[80px] h-screen p-4 flex flex-col border-r border-gray-300
+        <nav className="w-[80px] h-full p-4 flex flex-col border-r border-gray-300
         dark:border-gray-700 ">
             <Center>
                 <MantineLogo type="mark" size={30} />

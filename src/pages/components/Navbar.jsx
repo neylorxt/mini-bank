@@ -12,8 +12,6 @@ export default function Navbar() {
 
 
 
-
-
     ////////////////////////////////////
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -22,7 +20,7 @@ export default function Navbar() {
 
 
     return (
-        <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+        <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 dark:border-gray-600">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <Link to={"/"} className="flex items-center space-x-3 rtl:space-x-reverse ">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/B-logo-1.png" className="h-8" alt="Logo" />
@@ -37,7 +35,13 @@ export default function Navbar() {
                         user ?
                             (
                                 <NavLink to={"/dashboard"} >
-                                    <Avatar color="cyan" radius="xl">MK</Avatar>
+                                    <Avatar color="cyan" radius="xl">
+                                        {
+                                            user?.username ? (
+                                                user.username?.charAt(0).toUpperCase() + user.username?.charAt(1).toUpperCase()
+                                            ) : "US"
+                                        }
+                                    </Avatar>
                                 </NavLink>
                             )
 
