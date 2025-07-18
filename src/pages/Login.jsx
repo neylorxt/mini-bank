@@ -3,9 +3,14 @@ import {Link, useNavigate} from "react-router-dom";
 import {useForm, Controller} from "react-hook-form"
 import { sendData } from "@neylorxt/react-request"
 import {useAuth} from "@/GlobalComponents/AuthProvider.jsx";
+import {useState} from "react";
+import {Alert} from "@mantine/core";
+import {IconInfoCircle} from "@tabler/icons-react";
 
 export default function Login() {
     const {login} = useAuth();
+    const [serverResponse, setServerResponse] = useState(null);
+
     const navigate = useNavigate();
 
     const { control, handleSubmit, formState: { errors } } = useForm({
@@ -30,6 +35,11 @@ export default function Login() {
             setTimeout(() => {
                 navigate("/dashboard");
             }, 300);
+        }else{
+            setServerResponse(response.data);
+            setTimeout(() => {
+                setServerResponse(null);
+            }, 3000)
         }
 
     }
@@ -138,6 +148,17 @@ export default function Login() {
                                 >
                                     Login
                                 </button>
+
+                                {
+                                    serverResponse?.error && (
+                                        <div>
+                                            <Alert variant="filled" color="red" title="ERROR" icon={<IconInfoCircle />}>
+                                                { serverResponse?.error ?? "Something went wrong" }
+                                            </Alert>
+                                        </div>
+                                    )
+                                }
+
                             </form>
                             <button
                                 className="w-full flex items-center justify-center gap-x-3 py-2.5 border rounded-lg text-sm
